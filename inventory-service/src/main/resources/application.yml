@@ -1,0 +1,43 @@
+server:
+  port: 8082
+
+
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  datasource:
+    className: com.mysql.jdbc.Driver
+    password: 76349851jude$$
+    url: jdbc:mysql://localhost:3306/inventory_service
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: create-drop 
+      ##use create drop only for develpment purposes only
+    show-sql: true
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#        exclude: "env,beans"
+
+
+
+---
+spring:
+  profiles: prod
+  datasource:
+    className: com.mysql.jdbc.Driver
+    password: 76349851Jude$$
+    url: jdbc:mysql://localhost:3306/inventory_service
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
