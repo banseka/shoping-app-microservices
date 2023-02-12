@@ -9,6 +9,8 @@ spring:
 ---
 spring:
   profiles: dev
+  application:
+    name: INVENTORY_SERVICE
   datasource:
     className: com.mysql.jdbc.Driver
     password: 76349851jude$$
@@ -19,6 +21,10 @@ spring:
       ddl-auto: create-drop 
       ##use create drop only for develpment purposes only
     show-sql: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
 #management:
 #  endpoints:
 #    web:

@@ -2,11 +2,11 @@ package com.bansekajude.inventoryservice.repository;
 
 import com.bansekajude.inventoryservice.model.Inventory;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InventoryRepositiry extends JpaRepository<Inventory, Long> {
 
-    public Optional<Inventory> findBySkuCode(String skuCode);
+    public List<Inventory> findAllBySkuCodeIn(List<String> skuCode);
 }

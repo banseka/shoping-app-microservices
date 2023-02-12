@@ -9,6 +9,8 @@ spring:
 ---
 spring:
   profiles: dev
+  application:
+    name: ORDERS_SERVICE
   datasource:
     className: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/order_service
@@ -18,6 +20,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
 #management:
 #  endpoints:
 #    web:

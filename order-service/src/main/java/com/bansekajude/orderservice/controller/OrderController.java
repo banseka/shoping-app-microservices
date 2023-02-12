@@ -17,11 +17,15 @@ public class OrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public String createOrder(@RequestBody OrderRequest orderRequest){
-        orderService.createOrder(orderRequest);
-        log.info("order created");
-        return "order created successfully";
-
+    public String createOrder(@RequestBody OrderRequest orderRequest) throws Exception{
+        try {
+            
+            orderService.createOrder(orderRequest);
+            log.info("order created");
+            return "order created successfully";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 }
 
