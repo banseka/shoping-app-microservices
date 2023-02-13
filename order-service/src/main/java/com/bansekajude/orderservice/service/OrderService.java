@@ -24,7 +24,7 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     @Autowired
-    private WebClient webClient;
+    private WebClient.Builder webClientBuilder;
 
 
     public Order createOrder(OrderRequest orderRequest) throws Exception{
@@ -38,7 +38,7 @@ public class OrderService {
 
         List<String> skuCodes  = orderLineItems.stream().map(item -> item.getSkuCode()).toList();
 
-        InventoryResponse[] response = webClient.get().uri("http://INVENTORY_SERVICE/api/inventory",
+        InventoryResponse[] response = webClientBuilder.build().get().uri("http://INVENTORY_SERVICE/api/inventory",
         UriBuilder -> UriBuilder.queryParam("skuCode", skuCodes).build())
         .retrieve().bodyToMono(InventoryResponse[].class).block();
         log.info("All products are in stock " + Arrays.stream(response).toList());
